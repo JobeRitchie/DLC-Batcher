@@ -5,6 +5,15 @@ models. Point it at a project and a list of videos; it runs DeepLabCut's own
 `analyze_videos` on each one, shows progress and tracking confidence while it
 works, and afterwards ranks the videos by how well the model tracked them.
 
+Auto-tune finds the fastest settings for your computer and your model. It runs
+short timed trials on a few seconds of video: the project's default batch size
+as a baseline, then larger batches, more parallel workers, and half precision.
+It reports the frames per second of each trial, recommends a batch size and
+worker count, and applies them to the Run tab with one click. Before each step
+it checks free GPU memory, so it backs off instead of running out of memory or
+disturbing another program on the same GPU. The result is saved per GPU, network
+and frame size, so you tune once per model.
+
 The `.h5`, `.pickle` and `.csv` files are written by DeepLabCut itself, so they
 are the same files a normal DeepLabCut run produces.
 
@@ -42,6 +51,15 @@ python -m dlc_batcher
 The Welcome page shows which DeepLabCut is in use. "Change…" lists every
 environment that was found and lets you browse to another one. The choice is
 stored in `%UserProfile%\.dlc_batcher\settings.json`.
+
+## Updates
+
+Install with `git clone` so the app can update itself. On start it checks the
+GitHub repository in the background. When a newer version exists, a bar appears
+at the top with "Update and restart": it fast-forwards the checkout and reopens
+the app. Files you edited in the app folder are never overwritten; the update
+stops and tells you instead. "Check for updates" in the header runs the check
+on demand. Git for Windows is required for this.
 
 ## Using it
 

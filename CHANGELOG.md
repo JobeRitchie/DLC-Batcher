@@ -12,6 +12,8 @@ First public version.
 - Quality tab: per-video scores and advice from the result files.
 - Welcome page showing the DeepLabCut version and environment in use, with a
   dialog to change it, and a list of recent projects.
+- Checks the git remote for a newer version on start and offers "Update and
+  restart", which fast-forwards the checkout and reopens the app.
 - The DeepLabCut environment is found without importing DeepLabCut (conda
   environments and common venv folders); the launcher uses the same search and
   asks for a path when nothing is found.

@@ -15,9 +15,14 @@ from . import theme as T
 
 DESCRIPTION = (
     "Runs DeepLabCut's analyze_videos over a list of videos and writes the same "
-    "result files DeepLabCut would. The model stays loaded between videos, the "
-    "batch size and worker count can be measured for this computer, and analyzed "
-    "videos are ranked by how well the model tracked them."
+    "result files DeepLabCut would. The model stays loaded between videos, and "
+    "analyzed videos are ranked by how well the model tracked them."
+)
+AUTO_TUNE = (
+    "Auto-tune times your model on this computer with short trials (larger "
+    "batches, more workers, half precision), checks free GPU memory before each "
+    "step, and recommends the fastest settings. Run it once per model before a "
+    "large batch."
 )
 
 
@@ -175,6 +180,8 @@ class WelcomeTab(QWidget):
         col.addWidget(divider)
         col.addSpacing(em // 2)
         col.addWidget(about)
+        col.addSpacing(em // 2)
+        col.addWidget(_label(AUTO_TUNE, "splashText", True))
         col.addSpacing(em)
         col.addLayout(self.env_row)
         col.addWidget(self.env_warn)
