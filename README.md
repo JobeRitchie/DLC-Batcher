@@ -4,6 +4,10 @@ Batch video analysis for [DeepLabCut](https://github.com/DeepLabCut/DeepLabCut)
 models. It runs DeepLabCut's own `analyze_videos` on a list of videos, so the
 output files are the ones DeepLabCut writes.
 
+It was built mainly for Auto-tune: the fastest batch size, worker count and
+precision differ from one computer to the next, so the app measures them on
+yours instead of guessing.
+
 - **Run**: pick a project and videos, watch progress and tracking confidence.
 - **Auto-tune**: times batch size, worker count and half precision on your
   computer and suggests the fastest settings.
